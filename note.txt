@@ -1,0 +1,14 @@
+Architecture model improvements (from Part 1 feedback)
+
+Part 1 feedback said my architecture diagram needs:
+- one standard notation throughout
+- clearer dependencies between components - implement 
+
+For Part 2:
+- Keep the architecture simple and consistent: 3 tiers + MVC package layout.
+- Show dependencies clearly (one direction):
+  View (Swing) -> Controller -> Service -> Repository -> CSV files
+- No GUI code touching CSV files directly.
+- Data tier is “CSV storage” (generic), not database tech.
+- ReferralManager will be the Singleton and all referral creation/processing goes through it.
+- I’ll add a small section in the report explaining the above and why it reduces coupling.
