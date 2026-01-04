@@ -7,7 +7,10 @@ import java.util.List;
 
 public class PatientTableModel extends AbstractTableModel {
 
-    private final String[] columns = { "Patient ID", "NHS Number", "First Name", "Last Name" };
+    private final String[] columns = { 
+        "Patient ID", "NHS Number", "First Name", "Last Name", "DOB", "Gender", 
+        "Phone", "Email", "Address", "Postcode", "GP Surgery" 
+    };
     private List<Patient> patients;
 
     public PatientTableModel(List<Patient> patients) {
@@ -16,7 +19,7 @@ public class PatientTableModel extends AbstractTableModel {
 
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
-        fireTableDataChanged();
+        fireTableDataChanged(); 
     }
 
     @Override
@@ -42,6 +45,13 @@ public class PatientTableModel extends AbstractTableModel {
             case 1 -> p.getNhsNumber();
             case 2 -> p.getFirstName();
             case 3 -> p.getLastName();
+            case 4 -> p.getDateOfBirth();
+            case 5 -> p.getGender();
+            case 6 -> p.getPhoneNumber();
+            case 7 -> p.getEmail();
+            case 8 -> p.getAddress();
+            case 9 -> p.getPostcode();
+            case 10 -> p.getGpSurgeryID();
             default -> "";
         };
     }
