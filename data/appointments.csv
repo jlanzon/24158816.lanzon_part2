@@ -1,0 +1,9 @@
+id,patient_first_name,patient_last_name,patient_dob,clinician_id,facility_id,appointment_date,appointment_time,appointment_type,status,notes
+A0001,Oliver,Smith,1987-03-14,C001,F001,2026-01-06,09:00,GP Consultation,Booked,Initial consultation for ongoing cough
+A0002,Amelia,Jones,1992-11-02,C002,F001,2026-01-06,09:30,Nurse Review,Booked,Blood pressure follow-up
+A0003,Harry,Taylor,1978-06-21,C003,F005,2026-01-07,10:15,Physio Assessment,Booked,Lower back pain assessment
+A0004,Isla,Brown,2001-09-09,C001,F001,2026-01-07,11:00,GP Consultation,Booked,Discuss migraine management
+A0005,Jack,Wilson,1965-01-30,C005,F002,2026-01-08,14:00,Cardiology Review,Booked,Post-op review
+A0006,Emily,Johnson,1984-12-18,C004,F002,2026-01-09,08:45,Acute Triage,Booked,Chest discomfort reported overnight
+A0007,Noah,Davies,1999-05-05,C002,F001,2026-01-10,13:15,Nurse Review,Cancelled,Patient cancelled via phone
+A0008,Mia,Thomas,1972-08-27,C003,F005,2026-01-10,15:30,Physio Follow-up,Booked,Progress check and exercises update

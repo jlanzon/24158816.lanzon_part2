@@ -1,0 +1,6 @@
+id,first_name,last_name,job_title,department,email,phone,is_active
+C001,Sarah,Patel,GP,Primary Care,sarah.patel@example.nhs.uk,07123456701,true
+C002,James,Walker,Nurse Practitioner,Primary Care,james.walker@example.nhs.uk,07123456702,true
+C003,Aisha,Khan,Physiotherapist,MSK,aisha.khan@example.nhs.uk,07123456703,true
+C004,Tom,Hughes,Paramedic,Acute Care,tom.hughes@example.nhs.uk,07123456704,true
+C005,Emily,Carter,Consultant,Cardiology,emily.carter@example.nhs.uk,07123456705,true

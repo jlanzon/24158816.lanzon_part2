@@ -1,0 +1,6 @@
+id,name,type,address_line1,city,postcode,phone,is_active
+F001,Ruskington Medical Centre,GP Surgery,1 High Street,Ruskington,NG34 9AA,01526300111,true
+F002,Lincoln Community Hospital,Hospital,Greetwell Road,Lincoln,LN2 5QY,01522303030,true
+F003,Sleaford Health Clinic,Clinic,12 Southgate,Sleaford,NG34 7RZ,01529300222,true
+F004,St George Pharmacy,Pharmacy,4 Market Place,Lincoln,LN1 1AA,01522300333,true
+F005,North Hykeham Physiotherapy,Physio Clinic,8 Station Road,North Hykeham,LN6 8AA,01522300444,true

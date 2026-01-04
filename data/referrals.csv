@@ -1,0 +1,6 @@
+id,appointment_id,patient_first_name,patient_last_name,referring_clinician_id,from_facility_id,to_service,priority,reason,referral_date,status
+R0001,A0001,Oliver,Smith,C001,F001,Respiratory Clinic,Routine,"Persistent cough > 3 weeks, rule out underlying condition",2026-01-06,Sent
+R0002,A0003,Harry,Taylor,C003,F005,MSK Specialist Physio,Routine,"Lower back pain not improving with self-management",2026-01-07,Sent
+R0003,A0005,Jack,Wilson,C005,F002,Cardiac Rehabilitation,Routine,"Post-operative rehab and lifestyle programme",2026-01-08,Sent
+R0004,A0006,Emily,Johnson,C004,F002,Acute Chest Pain Pathway,Urgent,"Chest discomfort with risk factors, requires same-week assessment",2026-01-09,Sent
+R0005,A0004,Isla,Brown,C001,F001,Neurology,Routine,"Recurrent migraines, consider preventive therapy",2026-01-07,Draft

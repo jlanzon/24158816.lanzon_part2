@@ -1,0 +1,6 @@
+id,first_name,last_name,job_title,team,email,phone,is_active
+S001,Louise,Hunt,Practice Manager,Operations,louise.hunt@example.nhs.uk,07123456801,true
+S002,Michael,Evans,Receptionist,Front Desk,michael.evans@example.nhs.uk,07123456802,true
+S003,Chloe,Brown,Medical Secretary,Admin,chloe.brown@example.nhs.uk,07123456803,true
+S004,Omar,Ali,Healthcare Assistant,Clinical Support,omar.ali@example.nhs.uk,07123456804,true
+S005,Hannah,Green,IT Support,IT,hannah.green@example.nhs.uk,07123456805,true
