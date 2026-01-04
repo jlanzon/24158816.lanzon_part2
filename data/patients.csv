@@ -1,0 +1,3 @@
+patientID,nhsNumber,firstName,lastName,dateOfBirth,gender,phoneNumber,email,address,postcode,emergencyContactName,emergencyContactPhone,registrationDate,gpSurgeryID,noRead
+P0001,2159847630,Joseph,Lanzon,1998-03-18,M,07900333444,joseph.lanzon@example.com,"32 something Close, Sleaford",NG34 7XY,Sarah Williams,07900333000,2022-09-18,FAC002,false
+P0002,3159847631,Hidden,Test,1980-01-01,F,07000000000,hidden@example.com,"1 Hidden St",AB12 3CD,Jane Doe,07000000001,2020-01-01,FAC003,true
