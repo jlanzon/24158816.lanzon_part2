@@ -1,7 +1,7 @@
 package view;
 
 import model.store.DataRepository;
-import view.tabs.PatientPanel;
+import view.tabs.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,17 +16,13 @@ public class MainFrame extends JFrame {
 
         JTabbedPane tabs = new JTabbedPane();
         tabs.addTab("Patients", new PatientPanel(repo));
-        tabs.addTab("Clinicians", placeholder("TODO later"));
-        tabs.addTab("Appointments",placeholder("TODO later"));
-        tabs.addTab("Prescriptions", placeholder("TODO later"));
-        tabs.addTab("Referrals", placeholder("TODO later"));
+        tabs.addTab("Clinicians", new ClinicianPanel(repo));
+        tabs.addTab("Staff", new StaffPanel(repo));
+        tabs.addTab("Facilities", new FacilityPanel(repo));
+        tabs.addTab("Appointments", new AppointmentPanel(repo));
+        tabs.addTab("Prescriptions", new PrescriptionPanel(repo));
+        tabs.addTab("Referrals", new ReferralPanel(repo));
 
         add(tabs, BorderLayout.CENTER);
-    }
-
-    private JPanel placeholder(String text) {
-        JPanel p = new JPanel(new BorderLayout());
-        p.add(new JLabel(text, SwingConstants.CENTER), BorderLayout.CENTER);
-        return p;
     }
 }
