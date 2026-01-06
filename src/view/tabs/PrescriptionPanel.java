@@ -28,7 +28,14 @@ public class PrescriptionPanel extends JPanel {
             model.setPrescriptions(controller.getPrescriptions());
         });
 
+        JButton export = new JButton("Export");
+        export.addActionListener(e -> {
+            controller.exportPrescriptions();
+            JOptionPane.showMessageDialog(this, "Exported to output/prescriptions_export.txt");
+        });
+
         actions.add(reload);
+        actions.add(export);
         add(actions, BorderLayout.NORTH);
     }
 }

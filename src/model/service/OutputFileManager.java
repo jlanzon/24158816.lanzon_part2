@@ -90,4 +90,35 @@ public class OutputFileManager {
         s += "========================================";
         return s;
     }
+    public void exportAllReferrals(java.util.List<Referral> list) {
+        Path path = CsvPaths.OUTPUT_DIR.resolve("referrals_export.txt");
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile())); // Overwrite
+            for (Referral r : list) {
+                String email = ReferralManager.getInstance().generateReferralEmail(r);
+                bw.write(email);
+                bw.newLine();
+                bw.newLine();
+            }
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void exportAllPrescriptions(java.util.List<Prescription> list) {
+        Path path = CsvPaths.OUTPUT_DIR.resolve("prescriptions_export.txt");
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile())); // Overwrite
+            for (Prescription p : list) {
+                String text = makePrescriptionText(p);
+                bw.write(text);
+                bw.newLine();
+                bw.newLine();
+            }
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

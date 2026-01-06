@@ -28,7 +28,14 @@ public class ReferralPanel extends JPanel {
             model.setReferrals(controller.getReferrals());
         });
 
+        JButton export = new JButton("Export");
+        export.addActionListener(e -> {
+            controller.exportReferrals();
+            JOptionPane.showMessageDialog(this, "Exported to output/referrals_export.txt");
+        });
+
         actions.add(reload);
+        actions.add(export);
         add(actions, BorderLayout.NORTH);
     }
 }

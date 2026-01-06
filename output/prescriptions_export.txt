@@ -1,0 +1,152 @@
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P0001
+Date: 2026-01-06
+
+Patient ID: Oliver
+Clinician ID: C001
+
+Medication: Amoxicillin
+Dosage: 500mg
+Frequency: Take one capsule three times a day for 7 days
+Duration: 0 days
+Quantity: 21
+Instructions: Take one capsule three times a day for 7 days
+
+Status: Issued
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P0002
+Date: 2026-01-06
+
+Patient ID: Amelia
+Clinician ID: C002
+
+Medication: Amlodipine
+Dosage: 5mg
+Frequency: Take one tablet once daily
+Duration: 0 days
+Quantity: 28
+Instructions: Take one tablet once daily
+
+Status: Issued
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P0003
+Date: 2026-01-07
+
+Patient ID: Isla
+Clinician ID: C001
+
+Medication: Sumatriptan
+Dosage: 50mg
+Frequency: Take one tablet at onset of migraine; may repeat after 2 hours if needed
+Duration: 0 days
+Quantity: 6
+Instructions: Take one tablet at onset of migraine; may repeat after 2 hours if needed
+
+Status: Issued
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P0004
+Date: 2026-01-08
+
+Patient ID: Jack
+Clinician ID: C005
+
+Medication: Atorvastatin
+Dosage: 20mg
+Frequency: Take one tablet at night
+Duration: 0 days
+Quantity: 28
+Instructions: Take one tablet at night
+
+Status: Issued
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P0005
+Date: 2026-01-10
+
+Patient ID: Mia
+Clinician ID: C003
+
+Medication: Ibuprofen
+Dosage: 400mg
+Frequency: Take one tablet up to three times a day with food as needed
+Duration: 0 days
+Quantity: 30
+Instructions: Take one tablet up to three times a day with food as needed
+
+Status: Issued
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: RX9001
+Date: null
+
+Patient ID: C001
+Clinician ID: 2026-01-06
+
+Medication: 500mg
+Dosage: 3x daily
+Frequency: 7
+Duration: 0 days
+Quantity: 21
+Instructions: 7
+
+Status: St George Pharmacy
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P9001
+Date: 2026-01-06
+
+Patient ID: P9001
+Clinician ID: C001
+
+Medication: Amoxicillin
+Dosage: 500mg
+Frequency: Take with food
+Duration: 0 days
+Quantity: 21
+Instructions: Take with food
+
+Status: Issued
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P9001
+Date: 2026-01-06
+
+Patient ID: P9001
+Clinician ID: C001
+
+Medication: Amoxicillin
+Dosage: 500mg
+Frequency: Take with food
+Duration: 0 days
+Quantity: 21
+Instructions: Take with food
+
+Status: Issued
+========================================
+

@@ -71,4 +71,12 @@ public class MainController {
         repo.getReferrals().add(r);
         outManager.saveNewReferral(r);
     }
+
+    public void exportReferrals() {
+        outManager.exportAllReferrals(repo.getReferrals());
+    }
+
+    public void exportPrescriptions() {
+        outManager.exportAllPrescriptions(repo.getPrescriptions());
+    }
 }
