@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class PrescriptionPanel extends JPanel {
 
-    private final DataRepository repo;
+    private final controller.MainController controller;
     private final PrescriptionTableModel model;
 
-    public PrescriptionPanel(DataRepository repo) {
-        this.repo = repo;
-        this.model = new PrescriptionTableModel(repo.getPrescriptions());
+    public PrescriptionPanel(controller.MainController controller) {
+        this.controller = controller;
+        this.model = new PrescriptionTableModel(controller.getPrescriptions());
 
         setLayout(new BorderLayout());
 
@@ -24,8 +24,8 @@ public class PrescriptionPanel extends JPanel {
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton reload = new JButton("Reload");
         reload.addActionListener(e -> {
-            repo.loadAll();
-            model.setPrescriptions(repo.getPrescriptions());
+            controller.loadAllData();
+            model.setPrescriptions(controller.getPrescriptions());
         });
 
         actions.add(reload);

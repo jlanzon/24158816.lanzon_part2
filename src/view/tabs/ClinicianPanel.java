@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class ClinicianPanel extends JPanel {
 
-    private final DataRepository repo;
+    private final controller.MainController controller;
     private final ClinicianTableModel model;
 
-    public ClinicianPanel(DataRepository repo) {
-        this.repo = repo;
-        this.model = new ClinicianTableModel(repo.getClinicians());
+    public ClinicianPanel(controller.MainController controller) {
+        this.controller = controller;
+        this.model = new ClinicianTableModel(controller.getClinicians());
 
         setLayout(new BorderLayout());
 
@@ -24,8 +24,8 @@ public class ClinicianPanel extends JPanel {
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton reload = new JButton("Reload");
         reload.addActionListener(e -> {
-            repo.loadAll();
-            model.setClinicians(repo.getClinicians());
+            controller.loadAllData();
+            model.setClinicians(controller.getClinicians());
         });
 
         actions.add(reload);

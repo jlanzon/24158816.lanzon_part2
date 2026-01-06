@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class ReferralPanel extends JPanel {
 
-    private final DataRepository repo;
+    private final controller.MainController controller;
     private final ReferralTableModel model;
 
-    public ReferralPanel(DataRepository repo) {
-        this.repo = repo;
-        this.model = new ReferralTableModel(repo.getReferrals());
+    public ReferralPanel(controller.MainController controller) {
+        this.controller = controller;
+        this.model = new ReferralTableModel(controller.getReferrals());
 
         setLayout(new BorderLayout());
 
@@ -24,8 +24,8 @@ public class ReferralPanel extends JPanel {
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton reload = new JButton("Reload");
         reload.addActionListener(e -> {
-            repo.loadAll();
-            model.setReferrals(repo.getReferrals());
+            controller.loadAllData();
+            model.setReferrals(controller.getReferrals());
         });
 
         actions.add(reload);

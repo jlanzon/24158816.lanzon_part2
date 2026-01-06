@@ -1,0 +1,54 @@
+========================================
+NHS REFERRAL NOTIFICATION
+========================================
+Referral ID: REF_TEST_001
+Date: 2026-01-06
+Priority: ROUTINE
+
+From: DOC001 at FAC001
+To: DOC002 at FAC002
+
+Patient: PAT_TEST_001
+Reason: Opinion
+Clinical Summary: Summary
+Investigations: None
+
+Status: PENDING
+========================================
+
+========================================
+NHS REFERRAL NOTIFICATION
+========================================
+Referral ID: REF_TEST_001
+Date: 2026-01-06
+Priority: ROUTINE
+
+From: DOC001 at FAC001
+To: DOC002 at FAC002
+
+Patient: PAT_TEST_001
+Reason: Opinion
+Clinical Summary: Summary
+Investigations: None
+
+Status: PENDING
+========================================
+
+========================================
+NHS REFERRAL NOTIFICATION
+========================================
+Referral ID: R9001
+Date: 2026-01-06
+Priority: Routine
+
+From: C001 at F001
+To: C005 at F002
+
+Patient: P9001
+Reason: Cardiology Consultation
+Clinical Summary: Patient reports palpitations
+Investigations: ECG
+
+Status: Sent
+========================================
+

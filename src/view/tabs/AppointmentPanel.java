@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class AppointmentPanel extends JPanel {
 
-    private final DataRepository repo;
+    private final controller.MainController controller;
     private final AppointmentTableModel model;
 
-    public AppointmentPanel(DataRepository repo) {
-        this.repo = repo;
-        this.model = new AppointmentTableModel(repo.getAppointments());
+    public AppointmentPanel(controller.MainController controller) {
+        this.controller = controller;
+        this.model = new AppointmentTableModel(controller.getAppointments());
 
         setLayout(new BorderLayout());
 
@@ -24,8 +24,8 @@ public class AppointmentPanel extends JPanel {
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton reload = new JButton("Reload");
         reload.addActionListener(e -> {
-            repo.loadAll();
-            model.setAppointments(repo.getAppointments());
+            controller.loadAllData();
+            model.setAppointments(controller.getAppointments());
         });
 
         actions.add(reload);

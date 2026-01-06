@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class FacilityPanel extends JPanel {
 
-    private final DataRepository repo;
+    private final controller.MainController controller;
     private final FacilityTableModel model;
 
-    public FacilityPanel(DataRepository repo) {
-        this.repo = repo;
-        this.model = new FacilityTableModel(repo.getFacilities());
+    public FacilityPanel(controller.MainController controller) {
+        this.controller = controller;
+        this.model = new FacilityTableModel(controller.getFacilities());
 
         setLayout(new BorderLayout());
 
@@ -24,8 +24,8 @@ public class FacilityPanel extends JPanel {
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton reload = new JButton("Reload");
         reload.addActionListener(e -> {
-            repo.loadAll();
-            model.setFacilities(repo.getFacilities());
+            controller.loadAllData();
+            model.setFacilities(controller.getFacilities());
         });
 
         actions.add(reload);

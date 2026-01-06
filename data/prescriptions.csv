@@ -4,3 +4,4 @@ P0002,A0002,Amelia,Jones,C002,2026-01-06,Amlodipine,5mg,"Take one tablet once da
 P0003,A0004,Isla,Brown,C001,2026-01-07,Sumatriptan,50mg,"Take one tablet at onset of migraine; may repeat after 2 hours if needed",6,false,Issued
 P0004,A0005,Jack,Wilson,C005,2026-01-08,Atorvastatin,20mg,"Take one tablet at night",28,true,Issued
 P0005,A0008,Mia,Thomas,C003,2026-01-10,Ibuprofen,400mg,"Take one tablet up to three times a day with food as needed",30,false,Issued
+RX9001,P9001,C001,A0001,2026-01-06,Amoxicillin,500mg,3x daily,7,21,Take with food,St George Pharmacy,Issued,2026-01-06,null

@@ -4,3 +4,4 @@ R0002,A0003,Harry,Taylor,C003,F005,MSK Specialist Physio,Routine,"Lower back pai
 R0003,A0005,Jack,Wilson,C005,F002,Cardiac Rehabilitation,Routine,"Post-operative rehab and lifestyle programme",2026-01-08,Sent
 R0004,A0006,Emily,Johnson,C004,F002,Acute Chest Pain Pathway,Urgent,"Chest discomfort with risk factors, requires same-week assessment",2026-01-09,Sent
 R0005,A0004,Isla,Brown,C001,F001,Neurology,Routine,"Recurrent migraines, consider preventive therapy",2026-01-07,Draft
+R9001,P9001,C001,C005,F001,F002,2026-01-06,Routine,Cardiology Consultation,Patient reports palpitations,ECG,Sent,A0001,Referral for specialist opinion,2026-01-06,2026-01-06

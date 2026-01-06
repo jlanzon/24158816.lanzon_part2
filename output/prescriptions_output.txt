@@ -1,0 +1,57 @@
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: RX_TEST_001
+Date: 2026-01-06
+
+Patient ID: PAT_TEST_001
+Clinician ID: DOC001
+
+Medication: Paracetamol
+Dosage: 500mg
+Frequency: 4x daily
+Duration: 7 days
+Quantity: 28
+Instructions: Take with water
+
+Status: ISSUED
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: RX_TEST_001
+Date: 2026-01-06
+
+Patient ID: PAT_TEST_001
+Clinician ID: DOC001
+
+Medication: Paracetamol
+Dosage: 500mg
+Frequency: 4x daily
+Duration: 7 days
+Quantity: 28
+Instructions: Take with water
+
+Status: ISSUED
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: RX9001
+Date: 2026-01-06
+
+Patient ID: P9001
+Clinician ID: C001
+
+Medication: Amoxicillin
+Dosage: 500mg
+Frequency: 3x daily
+Duration: 7 days
+Quantity: 21
+Instructions: Take with food
+
+Status: Issued
+========================================
+
