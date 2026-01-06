@@ -92,10 +92,10 @@ public class DataRepository {
             String id = CsvUtil.get(r, "clinicianID", "id");
             String first = CsvUtil.get(r, "firstName", "first_name");
             String last = CsvUtil.get(r, "lastName", "last_name");
-            String role = CsvUtil.get(r, "role");
+            String role = CsvUtil.get(r, "role", "job_title");
             String qual = CsvUtil.get(r, "qualification");
-            String spec = CsvUtil.get(r, "specialty");
-            String work = CsvUtil.get(r, "workplace");
+            String spec = CsvUtil.get(r, "specialty", "department");
+            String work = CsvUtil.get(r, "workplace", "department");
             String phone = CsvUtil.get(r, "phoneNumber", "phone");
             String email = CsvUtil.get(r, "email");
 
@@ -111,9 +111,9 @@ public class DataRepository {
             String id = CsvUtil.get(r, "staffID", "id");
             String first = CsvUtil.get(r, "firstName", "first_name");
             String last = CsvUtil.get(r, "lastName", "last_name");
-            String role = CsvUtil.get(r, "role");
-            String dept = CsvUtil.get(r, "department");
-            String facId = CsvUtil.get(r, "facilityID", "facility_id");
+            String role = CsvUtil.get(r, "role", "job_title");
+            String dept = CsvUtil.get(r, "department", "team");
+            String facId = CsvUtil.get(r, "facilityID", "facility_id", "team");
             String phone = CsvUtil.get(r, "phoneNumber", "phone");
             String email = CsvUtil.get(r, "email");
             String status = CsvUtil.get(r, "employmentStatus", "status");
@@ -133,12 +133,12 @@ public class DataRepository {
             String id = CsvUtil.get(r, "facilityID", "id");
             String name = CsvUtil.get(r, "facilityName", "name");
             String type = CsvUtil.get(r, "facilityType", "type");
-            String addr = CsvUtil.get(r, "address");
+            String addr = CsvUtil.get(r, "address", "address_line1");
             String post = CsvUtil.get(r, "postcode");
             String phone = CsvUtil.get(r, "phoneNumber", "phone");
             String email = CsvUtil.get(r, "email");
             String hours = CsvUtil.get(r, "openingHours", "hours");
-            String manager = CsvUtil.get(r, "managerName", "manager");
+            String manager = CsvUtil.get(r, "managerName", "manager", "type");
             int cap = parseInt(CsvUtil.get(r, "capacity"));
             String specs = CsvUtil.get(r, "specialitiesOffered", "specialities");
 
@@ -152,15 +152,15 @@ public class DataRepository {
         List<Map<String, String>> rows = CsvReader.readAllAsMaps(CsvPaths.APPOINTMENTS);
         for (Map<String, String> r : rows) {
             String id = CsvUtil.get(r, "appointmentID", "id");
-            String patId = CsvUtil.get(r, "patientID", "patient_id");
+            String patId = CsvUtil.get(r, "patientID", "patient_id", "patient_first_name");
             String clinId = CsvUtil.get(r, "clinicianID", "clinician_id");
             String facId = CsvUtil.get(r, "facilityID", "facility_id");
-            LocalDate date = parseDate(CsvUtil.get(r, "appointmentDate", "date"));
-            LocalTime time = parseTime(CsvUtil.get(r, "appointmentTime", "time"));
+            LocalDate date = parseDate(CsvUtil.get(r, "appointmentDate", "appointment_date"));
+            LocalTime time = parseTime(CsvUtil.get(r, "appointmentTime", "appointment_time"));
             int dur = parseInt(CsvUtil.get(r, "durationMinutes", "duration"));
-            String type = CsvUtil.get(r, "appointmentType", "type");
+            String type = CsvUtil.get(r, "appointmentType", "appointment_type");
             String status = CsvUtil.get(r, "status");
-            String reason = CsvUtil.get(r, "reasonForVisit", "reason");
+            String reason = CsvUtil.get(r, "reasonForVisit", "reason", "notes");
             String notes = CsvUtil.get(r, "notes");
             LocalDate created = parseDate(CsvUtil.get(r, "createdDate", "created"));
             LocalDate modified = parseDate(CsvUtil.get(r, "lastModified", "modified"));
@@ -175,19 +175,19 @@ public class DataRepository {
         List<Map<String, String>> rows = CsvReader.readAllAsMaps(CsvPaths.PRESCRIPTIONS);
         for (Map<String, String> r : rows) {
             String id = CsvUtil.get(r, "prescriptionID", "id");
-            String patId = CsvUtil.get(r, "patientID", "patient_id");
+            String patId = CsvUtil.get(r, "patientID", "patient_id", "patient_first_name");
             String clinId = CsvUtil.get(r, "clinicianID", "clinician_id");
             String appId = CsvUtil.get(r, "appointmentID", "appointment_id");
-            LocalDate date = parseDate(CsvUtil.get(r, "prescriptionDate", "date"));
-            String med = CsvUtil.get(r, "medicationName", "medication");
+            LocalDate date = parseDate(CsvUtil.get(r, "prescriptionDate", "date", "issued_date"));
+            String med = CsvUtil.get(r, "medicationName", "medication", "medication_name");
             String dos = CsvUtil.get(r, "dosage");
-            String freq = CsvUtil.get(r, "frequency");
+            String freq = CsvUtil.get(r, "frequency", "instructions");
             int dur = parseInt(CsvUtil.get(r, "durationDays", "duration"));
             int qty = parseInt(CsvUtil.get(r, "quantity"));
             String instr = CsvUtil.get(r, "instructions");
             String pharm = CsvUtil.get(r, "pharmacyName", "pharmacy");
             String status = CsvUtil.get(r, "status");
-            LocalDate issue = parseDate(CsvUtil.get(r, "issueDate", "issue_date"));
+            LocalDate issue = parseDate(CsvUtil.get(r, "issueDate", "issue_date", "issued_date"));
             LocalDate coll = parseDate(CsvUtil.get(r, "collectionDate", "collection_date"));
 
             if (!id.isBlank()) {
@@ -200,13 +200,13 @@ public class DataRepository {
         List<Map<String, String>> rows = CsvReader.readAllAsMaps(CsvPaths.REFERRALS);
         for (Map<String, String> r : rows) {
             String id = CsvUtil.get(r, "referralID", "id");
-            String patId = CsvUtil.get(r, "patientID", "patient_id");
+            String patId = CsvUtil.get(r, "patientID", "patient_id", "patient_first_name");
             String refClinId = CsvUtil.get(r, "referringClinicianID", "referring_clinician_id");
-            String toClinId = CsvUtil.get(r, "referredToClinicianID", "referred_to_clinician_id");
-            String refFacId = CsvUtil.get(r, "referringFacilityID", "referring_facility_id");
+            String toClinId = CsvUtil.get(r, "referredToClinicianID", "referred_to_clinician_id", "to_service");
+            String refFacId = CsvUtil.get(r, "referringFacilityID", "referring_facility_id", "from_facility_id");
             String toFacId = CsvUtil.get(r, "referredToFacilityID", "referred_to_facility_id");
-            LocalDate date = parseDate(CsvUtil.get(r, "referralDate", "date"));
-            String urgency = CsvUtil.get(r, "urgencyLevel", "urgency");
+            LocalDate date = parseDate(CsvUtil.get(r, "referralDate", "referral_date"));
+            String urgency = CsvUtil.get(r, "urgencyLevel", "urgency", "priority");
             String reason = CsvUtil.get(r, "referralReason", "reason");
             String summary = CsvUtil.get(r, "clinicalSummary", "summary");
             String inv = CsvUtil.get(r, "requestedInvestigations", "investigations");

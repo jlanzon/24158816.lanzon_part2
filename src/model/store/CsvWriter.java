@@ -12,7 +12,6 @@ public class CsvWriter {
 
     public void appendPatientToCsv(Patient p, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), true));
-        // patientID,nhsNumber,firstName,lastName,dateOfBirth,gender,phoneNumber,email,address,postcode,emergencyContactName,emergencyContactPhone,registrationDate,gpSurgeryID,noRead
         String line = p.getPatientId() + "," +
                 p.getNhsNumber() + "," +
                 p.getFirstName() + "," +
@@ -27,7 +26,7 @@ public class CsvWriter {
                 p.getEmergencyContactPhone() + "," +
                 p.getRegistrationDate() + "," +
                 p.getGpSurgeryID() + "," +
-                "false"; // noRead default
+                "false"; // noRead default false. Can change to hide the data I am testing an manually check 
         writer.write(line);
         writer.newLine();
         writer.close();
@@ -35,18 +34,17 @@ public class CsvWriter {
 
     public void appendPrescriptionToCsv(Prescription p, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), true));
-        // id,appointment_id,patient_first_name,patient_last_name,clinician_id,issued_date,medication_name,dosage,instructions,quantity,repeat_authorised,status
         String line = p.getPrescriptionID() + "," +
                 p.getAppointmentID() + "," +
-                "Unknown" + "," + // patient_first_name
-                "Unknown" + "," + // patient_last_name
+                p.getPatientID() + "," + 
+                "Unknown" + "," + 
                 p.getClinicianID() + "," +
                 p.getIssueDate() + "," +
                 p.getMedicationName() + "," +
                 p.getDosage() + "," +
                 "\"" + p.getInstructions() + "\"" + "," +
                 p.getQuantity() + "," +
-                "false" + "," + // repeat_authorised
+                "false" + "," + 
                 p.getStatus();
         writer.write(line);
         writer.newLine();
@@ -55,14 +53,13 @@ public class CsvWriter {
 
     public void appendReferralToCsv(Referral r, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), true));
-        // id,appointment_id,patient_first_name,patient_last_name,referring_clinician_id,from_facility_id,to_service,priority,reason,referral_date,status
         String line = r.getReferralID() + "," +
                 r.getAppointmentID() + "," +
-                "Unknown" + "," + // patient_first_name
-                "Unknown" + "," + // patient_last_name
+                r.getPatientID() + "," + // patient_first_name (Hack: Store ID here)
+                "Unknown" + "," + 
                 r.getReferringClinicianID() + "," +
                 r.getReferringFacilityID() + "," +
-                "Unknown Service" + "," + // to_service
+                "Unknown Service" + "," + 
                 r.getUrgencyLevel() + "," +
                 "\"" + r.getReferralReason() + "\"" + "," +
                 r.getReferralDate() + "," +

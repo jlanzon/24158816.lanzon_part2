@@ -17,9 +17,9 @@ public class ReferralManagerTest {
         }
 
         Referral r1 = new Referral(
-            "REF001", "PAT001", "DOC001", "DOC002", "FAC001", "FAC002",
+            "REF010", "PAT010", "DOC010", "DOC010", "FAC010", "FAC010",
             LocalDate.now(), "HIGH", "Checkup", "Summary", "Blood Test", "PENDING",
-            "APP001", "Notes", LocalDate.now(), LocalDate.now()
+            "APP010", "Notes", LocalDate.now(), LocalDate.now()
         );
 
         manager.addReferral(r1);
@@ -29,7 +29,7 @@ public class ReferralManagerTest {
         System.out.println("\nGenerated Email:\n" + email);
 
         Referral processed = manager.processNextReferral();
-        if (processed != null && processed.getReferralID().equals("REF001")) {
+        if (processed != null && processed.getReferralID().equals("REF010")) {
             System.out.println("\nSUCCESS: Processed referral matches added referral.");
         } else {
             System.out.println("\nFAILURE: Processed referral mismatch.");

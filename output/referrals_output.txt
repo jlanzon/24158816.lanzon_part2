@@ -52,3 +52,39 @@ Investigations: ECG
 Status: Sent
 ========================================
 
+========================================
+NHS REFERRAL NOTIFICATION
+========================================
+Referral ID: R9001
+Date: 2026-01-06
+Priority: Routine
+
+From: C001 at F001
+To: C005 at F002
+
+Patient: P9001
+Reason: Cardiology Consultation
+Clinical Summary: Patient reports palpitations
+Investigations: ECG
+
+Status: Sent
+========================================
+
+========================================
+NHS REFERRAL NOTIFICATION
+========================================
+Referral ID: R9001
+Date: 2026-01-06
+Priority: Routine
+
+From: C001 at F001
+To: C005 at F002
+
+Patient: P9001
+Reason: Cardiology Consultation
+Clinical Summary: Patient reports palpitations
+Investigations: ECG
+
+Status: Sent
+========================================
+

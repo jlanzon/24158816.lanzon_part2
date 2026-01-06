@@ -55,3 +55,41 @@ Instructions: Take with food
 Status: Issued
 ========================================
 
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P9001
+Date: 2026-01-06
+
+Patient ID: P9001
+Clinician ID: C001
+
+Medication: Amoxicillin
+Dosage: 500mg
+Frequency: 3x daily
+Duration: 7 days
+Quantity: 21
+Instructions: Take with food
+
+Status: Issued
+========================================
+
+========================================
+PRESCRIPTION
+========================================
+Prescription ID: P9001
+Date: 2026-01-06
+
+Patient ID: P9001
+Clinician ID: C001
+
+Medication: Amoxicillin
+Dosage: 500mg
+Frequency: 3x daily
+Duration: 7 days
+Quantity: 21
+Instructions: Take with food
+
+Status: Issued
+========================================
+
