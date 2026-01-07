@@ -100,6 +100,7 @@ public class MainController {
 
     public void addReferral(Referral r) {
         repo.getReferrals().add(r);
+        refManager.addReferral(r); 
         outManager.saveNewReferral(r);
         updateStatus("Referral added and saved.");
     }
@@ -225,6 +226,54 @@ public class MainController {
         } catch (Exception e) {
             e.printStackTrace();
             updateStatus("Error deleting clinician: " + e.getMessage());
+        }
+    }
+
+    public void deletePatient(String id) {
+        List<Patient> list = repo.getPatients();
+        boolean removed = list.removeIf(p -> p.getPatientId().equals(id));
+        if (removed) {
+            try {
+                writer.saveAllPatients(list, CsvPaths.PATIENTS);
+                updateStatus("Patient deleted successfully.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                updateStatus("Error deleting patient: " + e.getMessage());
+            }
+        } else {
+            updateStatus("Patient not found.");
+        }
+    }
+
+    public void deletePrescription(String id) {
+        List<Prescription> list = repo.getPrescriptions();
+        boolean removed = list.removeIf(p -> p.getPrescriptionID().equals(id));
+        if (removed) {
+            try {
+                writer.saveAllPrescriptions(list, CsvPaths.PRESCRIPTIONS);
+                updateStatus("Prescription deleted successfully.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                updateStatus("Error deleting prescription: " + e.getMessage());
+            }
+        } else {
+            updateStatus("Prescription not found.");
+        }
+    }
+
+    public void deleteReferral(String id) {
+        List<Referral> list = repo.getReferrals();
+        boolean removed = list.removeIf(r -> r.getReferralID().equals(id));
+        if (removed) {
+            try {
+                writer.saveAllReferrals(list, CsvPaths.REFERRALS);
+                updateStatus("Referral deleted successfully.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                updateStatus("Error deleting referral: " + e.getMessage());
+            }
+        } else {
+            updateStatus("Referral not found.");
         }
     }
 }

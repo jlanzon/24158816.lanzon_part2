@@ -65,7 +65,8 @@ public class PrescriptionPanel extends JPanel {
             if (selectedRow >= 0) {
                 int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this prescription?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    controller.getPrescriptions().remove(selectedRow);
+                    model.domain.Prescription selected = controller.getPrescriptions().get(selectedRow);
+                    controller.deletePrescription(selected.getPrescriptionID());
                     model.setPrescriptions(controller.getPrescriptions());
                 }
             }

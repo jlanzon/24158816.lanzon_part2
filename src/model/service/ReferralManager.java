@@ -7,17 +7,34 @@ import java.util.Queue;
 public class ReferralManager {
     private static ReferralManager instance = new ReferralManager();
     private Queue<Referral> queue;
+    private java.util.Set<String> processedIds;
 
     private ReferralManager() {
         queue = new LinkedList<>();
+        processedIds = new java.util.HashSet<>();
     }
 
     public static ReferralManager getInstance() {
         return instance;
     }
 
-    public void addReferral(Referral r) {
+    public boolean addReferral(Referral r) {
+        if (processedIds.contains(r.getReferralID())) {
+            return false;
+        }
         queue.add(r);
+        processedIds.add(r.getReferralID());
+        auditLog(r);
+        return true;
+    }
+
+    private void auditLog(Referral r) {
+        try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("output/referral_audit.txt", true))) {
+            writer.write("Referral Created: " + r.getReferralID() + " at " + java.time.LocalDateTime.now());
+            writer.newLine();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Referral processNextReferral() {

@@ -59,7 +59,8 @@ public class PatientPanel extends JPanel {
             if (selectedRow >= 0) {
                 int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this patient?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    controller.getPatients().remove(selectedRow);
+                    model.domain.Patient selectedPatient = controller.getPatients().get(selectedRow);
+                    controller.deletePatient(selectedPatient.getPatientId());
                     model.setPatients(controller.getPatients());
                 }
             }

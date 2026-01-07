@@ -94,7 +94,7 @@ public class ClinicianDialog extends JDialog {
 
         add(buttonPanel, BorderLayout.SOUTH);
 
-        setSize(400, 500);
+        setSize(600, 600);
         setLocationRelativeTo(parent);
     }
 

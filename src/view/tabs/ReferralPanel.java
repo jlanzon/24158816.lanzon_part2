@@ -65,7 +65,8 @@ public class ReferralPanel extends JPanel {
             if (selectedRow >= 0) {
                 int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this referral?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    controller.getReferrals().remove(selectedRow);
+                    model.domain.Referral selected = controller.getReferrals().get(selectedRow);
+                    controller.deleteReferral(selected.getReferralID());
                     model.setReferrals(controller.getReferrals());
                 }
             }

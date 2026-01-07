@@ -120,7 +120,7 @@ public class PatientDialog extends JDialog {
 
         add(buttonPanel, BorderLayout.SOUTH);
 
-        setSize(400, 600);
+        setSize(600, 600);
         setLocationRelativeTo(parent);
     }
 
