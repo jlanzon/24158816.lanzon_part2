@@ -4,17 +4,22 @@ import controller.MainController;
 import model.store.DataRepository;
 import view.MainFrame;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            DataRepository repo = new DataRepository();
-            MainController controller = new MainController(repo);
-            controller.loadAllData();
-
-            MainFrame frame = new MainFrame(controller);
-            frame.setVisible(true);
+            try {
+                DataRepository repository = new DataRepository();
+                repository.loadAll();
+                MainController controller = new MainController(repository);
+                MainFrame frame = new MainFrame(controller);
+                
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error starting application: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 }
