@@ -34,7 +34,7 @@ public class CsvWriter {
 
     public void saveAllPatients(java.util.List<Patient> patients, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), false)); // false to overwrite
-        writer.write("patient_id,nhs_number,first_name,last_name,dob,gender,phone_number,email,address,postcode,emergency_contact_name,emergency_contact_phone,registration_date,gp_surgery_id,no_read");
+        writer.write("patientId,nhsNumber,firstName,lastName,dateOfBirth,gender,phoneNumber,email,address,postcode,emergencyContactName,emergencyContactPhone,registrationDate,gpSurgeryID,noRead");
         writer.newLine();
         
         for (Patient p : patients) {
@@ -80,7 +80,7 @@ public class CsvWriter {
 
     public void saveAllPrescriptions(java.util.List<Prescription> prescriptions, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), false));
-        writer.write("prescription_id,appointment_id,patient_id,patient_first_name,clinician_id,issue_date,medication_name,dosage,instructions,quantity,is_dispensed,status");
+        writer.write("prescriptionID,appointmentID,patientID,patientFirstName,clinicianID,issueDate,medicationName,dosage,instructions,quantity,isDispensed,status,prescriptionDate,frequency,durationDays,pharmacyName,collectionDate");
         writer.newLine();
 
         for (Prescription p : prescriptions) {
@@ -95,7 +95,12 @@ public class CsvWriter {
                     "\"" + p.getInstructions() + "\"" + "," +
                     p.getQuantity() + "," +
                     "false" + "," + 
-                    p.getStatus();
+                    p.getStatus() + "," +
+                    p.getPrescriptionDate() + "," +
+                    p.getFrequency() + "," +
+                    p.getDurationDays() + "," +
+                    p.getPharmacyName() + "," +
+                    p.getCollectionDate();
             writer.write(line);
             writer.newLine();
         }
@@ -122,7 +127,7 @@ public class CsvWriter {
 
     public void saveAllReferrals(java.util.List<Referral> referrals, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), false));
-        writer.write("referral_id,appointment_id,patient_id,patient_first_name,referring_clinician_id,referring_facility_id,service_requested,urgency_level,referral_reason,referral_date,status");
+        writer.write("referralID,appointmentID,patientID,patientFirstName,referringClinicianID,referringFacilityID,serviceRequested,urgencyLevel,referralReason,referralDate,status,referredToClinicianID,referredToFacilityID,clinicalSummary,requestedInvestigations,notes,createdDate,lastUpdated");
         writer.newLine();
 
         for (Referral r : referrals) {
@@ -136,7 +141,14 @@ public class CsvWriter {
                     r.getUrgencyLevel() + "," +
                     "\"" + r.getReferralReason() + "\"" + "," +
                     r.getReferralDate() + "," +
-                    r.getStatus();
+                    r.getStatus() + "," +
+                    r.getReferredToClinicianID() + "," +
+                    r.getReferredToFacilityID() + "," +
+                    "\"" + r.getClinicalSummary() + "\"" + "," +
+                    "\"" + r.getRequestedInvestigations() + "\"" + "," +
+                    "\"" + r.getNotes() + "\"" + "," +
+                    r.getCreatedDate() + "," +
+                    r.getLastUpdated();
             writer.write(line);
             writer.newLine();
         }
@@ -165,7 +177,7 @@ public class CsvWriter {
 
     public void saveAllAppointments(java.util.List<model.domain.Appointment> appointments, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), false));
-        writer.write("appointment_id,patient_id,clinician_id,facility_id,appointment_date,appointment_time,duration_minutes,appointment_type,status,reason_for_visit,notes,created_date,last_modified");
+        writer.write("appointmentID,patientID,clinicianID,facilityID,appointmentDate,appointmentTime,durationMinutes,appointmentType,status,reasonForVisit,notes,createdDate,lastModified");
         writer.newLine();
 
         for (model.domain.Appointment a : appointments) {
@@ -198,7 +210,12 @@ public class CsvWriter {
                 c.getSpecialty() + "," +
                 c.getWorkplace() + "," +
                 c.getPhoneNumber() + "," +
-                c.getEmail();
+                c.getEmail() + "," +
+                c.getTitle() + "," +
+                c.getGmcNumber() + "," +
+                c.getWorkplaceType() + "," +
+                c.getEmploymentStatus() + "," +
+                c.getStartDate();
         writer.write(line);
         writer.newLine();
         writer.close();
@@ -206,7 +223,7 @@ public class CsvWriter {
 
     public void saveAllClinicians(java.util.List<model.domain.Clinician> clinicians, Path path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), false));
-        writer.write("clinician_id,first_name,last_name,role,qualification,specialty,workplace,phone_number,email");
+        writer.write("clinicianID,firstName,lastName,role,qualification,specialty,workplace,phoneNumber,email,title,gmcNumber,workplaceType,employmentStatus,startDate");
         writer.newLine();
 
         for (model.domain.Clinician c : clinicians) {
@@ -218,7 +235,12 @@ public class CsvWriter {
                     c.getSpecialty() + "," +
                     c.getWorkplace() + "," +
                     c.getPhoneNumber() + "," +
-                    c.getEmail();
+                    c.getEmail() + "," +
+                    c.getTitle() + "," +
+                    c.getGmcNumber() + "," +
+                    c.getWorkplaceType() + "," +
+                    c.getEmploymentStatus() + "," +
+                    c.getStartDate();
             writer.write(line);
             writer.newLine();
         }

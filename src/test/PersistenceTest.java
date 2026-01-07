@@ -42,6 +42,13 @@ public class PersistenceTest {
         controller.addReferral(ref);
         System.out.println("Added Referral. Repo size: " + controller.getReferrals().size());
 
+        model.domain.Clinician c = new model.domain.Clinician(
+            "C9001", "Dr", "Who", "Doctor", "PhD", "Time Travel", "TARDIS", "07700900990", "doctor@who.com",
+            "Dr", "1234567", "Hospital", "Full Time", LocalDate.now()
+        );
+        controller.addClinician(c);
+        System.out.println("Added Clinician. Repo size: " + controller.getClinicians().size());
+
         System.out.println("Check 'output' directory and 'data' CSV files for new records.");
     }
 }
