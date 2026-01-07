@@ -79,14 +79,19 @@ public class OutputFileManager {
         s += "Prescription ID: " + p.getPrescriptionID() + "\n";
         s += "Date: " + p.getPrescriptionDate() + "\n\n";
         s += "Patient ID: " + p.getPatientID() + "\n";
-        s += "Clinician ID: " + p.getClinicianID() + "\n\n";
+        s += "Clinician ID: " + p.getClinicianID() + "\n";
+        s += "Appointment ID: " + p.getAppointmentID() + "\n\n";
         s += "Medication: " + p.getMedicationName() + "\n";
         s += "Dosage: " + p.getDosage() + "\n";
         s += "Frequency: " + p.getFrequency() + "\n";
         s += "Duration: " + p.getDurationDays() + " days\n";
         s += "Quantity: " + p.getQuantity() + "\n";
         s += "Instructions: " + p.getInstructions() + "\n\n";
+        s += "Pharmacy: " + p.getPharmacyName() + "\n";
         s += "Status: " + p.getStatus() + "\n";
+        if (p.getCollectionDate() != null) {
+            s += "Collection Date: " + p.getCollectionDate() + "\n";
+        }
         s += "========================================";
         return s;
     }

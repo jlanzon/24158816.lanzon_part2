@@ -18,6 +18,7 @@ public class PrescriptionPanel extends JPanel {
 
         JTable table = new JTable(model);
         table.setFillsViewportHeight(true);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         add(new JScrollPane(table), BorderLayout.CENTER);
 
@@ -43,7 +44,22 @@ public class PrescriptionPanel extends JPanel {
             }
         });
 
+        JButton editButton = new JButton("Edit Prescription");
+        editButton.setEnabled(false);
+        editButton.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow >= 0) {
+                model.domain.Prescription selected = controller.getPrescriptions().get(selectedRow);
+                view.dialogs.PrescriptionDialog dialog = new view.dialogs.PrescriptionDialog((JFrame) SwingUtilities.getWindowAncestor(this), controller, selected);
+                dialog.setVisible(true);
+                if (dialog.getResult() != null) {
+                    model.setPrescriptions(controller.getPrescriptions());
+                }
+            }
+        });
+
         JButton deleteButton = new JButton("Delete Prescription");
+        deleteButton.setEnabled(false);
         deleteButton.addActionListener(e -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow >= 0) {
@@ -52,14 +68,19 @@ public class PrescriptionPanel extends JPanel {
                     controller.getPrescriptions().remove(selectedRow);
                     model.setPrescriptions(controller.getPrescriptions());
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Please select a prescription to delete.");
             }
+        });
+
+        table.getSelectionModel().addListSelectionListener(e -> {
+            boolean rowSelected = table.getSelectedRow() >= 0;
+            editButton.setEnabled(rowSelected);
+            deleteButton.setEnabled(rowSelected);
         });
 
         actions.add(reload);
         actions.add(export);
         actions.add(addButton);
+        actions.add(editButton);
         actions.add(deleteButton);
         add(actions, BorderLayout.NORTH);
     }

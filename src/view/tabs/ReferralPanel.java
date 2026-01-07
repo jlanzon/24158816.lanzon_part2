@@ -18,6 +18,7 @@ public class ReferralPanel extends JPanel {
 
         JTable table = new JTable(model);
         table.setFillsViewportHeight(true);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         add(new JScrollPane(table), BorderLayout.CENTER);
 
@@ -43,7 +44,22 @@ public class ReferralPanel extends JPanel {
             }
         });
 
+        JButton editButton = new JButton("Edit Referral");
+        editButton.setEnabled(false);
+        editButton.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow >= 0) {
+                model.domain.Referral selected = controller.getReferrals().get(selectedRow);
+                view.dialogs.ReferralDialog dialog = new view.dialogs.ReferralDialog((JFrame) SwingUtilities.getWindowAncestor(this), controller, selected);
+                dialog.setVisible(true);
+                if (dialog.getResult() != null) {
+                    model.setReferrals(controller.getReferrals());
+                }
+            }
+        });
+
         JButton deleteButton = new JButton("Delete Referral");
+        deleteButton.setEnabled(false);
         deleteButton.addActionListener(e -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow >= 0) {
@@ -52,14 +68,19 @@ public class ReferralPanel extends JPanel {
                     controller.getReferrals().remove(selectedRow);
                     model.setReferrals(controller.getReferrals());
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Please select a referral to delete.");
             }
+        });
+
+        table.getSelectionModel().addListSelectionListener(e -> {
+            boolean rowSelected = table.getSelectedRow() >= 0;
+            editButton.setEnabled(rowSelected);
+            deleteButton.setEnabled(rowSelected);
         });
 
         actions.add(reload);
         actions.add(export);
         actions.add(addButton);
+        actions.add(editButton);
         actions.add(deleteButton);
         add(actions, BorderLayout.NORTH);
     }

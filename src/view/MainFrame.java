@@ -25,5 +25,11 @@ public class MainFrame extends JFrame {
         tabbedPane.addTab("Referrals", new ReferralPanel(controller));
         
         add(tabbedPane, BorderLayout.CENTER);
+
+        JLabel statusLabel = new JLabel("Ready");
+        statusLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        add(statusLabel, BorderLayout.SOUTH);
+
+        controller.setStatusListener(status -> statusLabel.setText(status));
     }
 }

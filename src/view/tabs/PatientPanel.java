@@ -18,6 +18,7 @@ public class PatientPanel extends JPanel {
 
         JTable table = new JTable(model);
         table.setFillsViewportHeight(true);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         add(new JScrollPane(table), BorderLayout.CENTER);
 
@@ -37,22 +38,42 @@ public class PatientPanel extends JPanel {
             }
         });
 
+        JButton editButton = new JButton("Edit Patient");
+        editButton.setEnabled(false);
+        editButton.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow >= 0) {
+                model.domain.Patient selectedPatient = controller.getPatients().get(selectedRow);
+                view.dialogs.PatientDialog dialog = new view.dialogs.PatientDialog((JFrame) SwingUtilities.getWindowAncestor(this), controller, selectedPatient);
+                dialog.setVisible(true);
+                if (dialog.getResult() != null) {
+                    model.setPatients(controller.getPatients());
+                }
+            }
+        });
+
         JButton deleteButton = new JButton("Delete Patient");
+        deleteButton.setEnabled(false);
         deleteButton.addActionListener(e -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow >= 0) {
                 int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this patient?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    controller.getPatients().remove(selectedRow); // Ideally should be by ID, but list index works for simple view
+                    controller.getPatients().remove(selectedRow);
                     model.setPatients(controller.getPatients());
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Please select a patient to delete.");
             }
+        });
+
+        table.getSelectionModel().addListSelectionListener(e -> {
+            boolean rowSelected = table.getSelectedRow() >= 0;
+            editButton.setEnabled(rowSelected);
+            deleteButton.setEnabled(rowSelected);
         });
 
         actions.add(reload);
         actions.add(addButton);
+        actions.add(editButton);
         actions.add(deleteButton);
         add(actions, BorderLayout.NORTH);
     }

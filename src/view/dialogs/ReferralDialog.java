@@ -24,64 +24,86 @@ public class ReferralDialog extends JDialog {
 
     private Referral result = null;
     private final MainController controller;
+    private Referral existingReferral = null;
 
     public ReferralDialog(JFrame parent, MainController controller) {
-        super(parent, "Add Referral", true);
+        this(parent, controller, null);
+    }
+
+    public ReferralDialog(JFrame parent, MainController controller, Referral existingReferral) {
+        super(parent, existingReferral == null ? "Add Referral" : "Edit Referral", true);
         this.controller = controller;
+        this.existingReferral = existingReferral;
 
         setLayout(new BorderLayout());
         JPanel formPanel = new JPanel(new GridLayout(13, 2, 5, 5));
 
         formPanel.add(new JLabel("Referral ID:"));
         referralIdField = new JTextField();
+        if (existingReferral != null) {
+            referralIdField.setText(existingReferral.getReferralID());
+            referralIdField.setEditable(false);
+        }
         formPanel.add(referralIdField);
 
         formPanel.add(new JLabel("Patient ID:"));
         patientIdField = new JTextField();
+        if (existingReferral != null) patientIdField.setText(existingReferral.getPatientID());
         formPanel.add(patientIdField);
 
         formPanel.add(new JLabel("Referring Clinician ID:"));
         referringClinicianIdField = new JTextField();
+        if (existingReferral != null) referringClinicianIdField.setText(existingReferral.getReferringClinicianID());
         formPanel.add(referringClinicianIdField);
 
         formPanel.add(new JLabel("Referred To Clinician ID:"));
         referredToClinicianIdField = new JTextField();
+        if (existingReferral != null) referredToClinicianIdField.setText(existingReferral.getReferredToClinicianID());
         formPanel.add(referredToClinicianIdField);
 
         formPanel.add(new JLabel("Referring Facility ID:"));
         referringFacilityIdField = new JTextField();
+        if (existingReferral != null) referringFacilityIdField.setText(existingReferral.getReferringFacilityID());
         formPanel.add(referringFacilityIdField);
 
         formPanel.add(new JLabel("Referred To Facility ID:"));
         referredToFacilityIdField = new JTextField();
+        if (existingReferral != null) referredToFacilityIdField.setText(existingReferral.getReferredToFacilityID());
         formPanel.add(referredToFacilityIdField);
 
         formPanel.add(new JLabel("Urgency Level:"));
         urgencyLevelField = new JTextField();
+        if (existingReferral != null) urgencyLevelField.setText(existingReferral.getUrgencyLevel());
         formPanel.add(urgencyLevelField);
 
         formPanel.add(new JLabel("Referral Reason:"));
         referralReasonField = new JTextField();
+        if (existingReferral != null) referralReasonField.setText(existingReferral.getReferralReason());
         formPanel.add(referralReasonField);
 
         formPanel.add(new JLabel("Clinical Summary:"));
         clinicalSummaryField = new JTextField();
+        if (existingReferral != null) clinicalSummaryField.setText(existingReferral.getClinicalSummary());
         formPanel.add(clinicalSummaryField);
 
         formPanel.add(new JLabel("Requested Investigations:"));
         requestedInvestigationsField = new JTextField();
+        if (existingReferral != null) requestedInvestigationsField.setText(existingReferral.getRequestedInvestigations());
         formPanel.add(requestedInvestigationsField);
 
         formPanel.add(new JLabel("Status:"));
         statusField = new JTextField();
+        if (existingReferral != null) statusField.setText(existingReferral.getStatus());
         formPanel.add(statusField);
 
         formPanel.add(new JLabel("Appointment ID:"));
         appointmentIdField = new JTextField();
+        if (existingReferral != null) appointmentIdField.setText(existingReferral.getAppointmentID());
         formPanel.add(appointmentIdField);
 
         formPanel.add(new JLabel("Notes:"));
         notesField = new JTextField();
+        if (existingReferral != null) notesField.setText(existingReferral.getNotes());
         formPanel.add(notesField);
 
         add(new JScrollPane(formPanel), BorderLayout.CENTER);
@@ -109,7 +131,7 @@ public class ReferralDialog extends JDialog {
             String referredToClinicianID = referredToClinicianIdField.getText();
             String referringFacilityID = referringFacilityIdField.getText();
             String referredToFacilityID = referredToFacilityIdField.getText();
-            LocalDate referralDate = LocalDate.now();
+            LocalDate referralDate = existingReferral != null ? existingReferral.getReferralDate() : LocalDate.now();
             String urgencyLevel = urgencyLevelField.getText();
             String referralReason = referralReasonField.getText();
             String clinicalSummary = clinicalSummaryField.getText();
@@ -117,15 +139,36 @@ public class ReferralDialog extends JDialog {
             String status = statusField.getText();
             String appointmentID = appointmentIdField.getText();
             String notes = notesField.getText();
-            LocalDate createdDate = LocalDate.now();
+            LocalDate createdDate = existingReferral != null ? existingReferral.getCreatedDate() : LocalDate.now();
             LocalDate lastUpdated = LocalDate.now();
 
+            if (!validateFields()) {
+                return;
+            }
+
             result = new Referral(referralID, patientID, referringClinicianID, referredToClinicianID, referringFacilityID, referredToFacilityID, referralDate, urgencyLevel, referralReason, clinicalSummary, requestedInvestigations, status, appointmentID, notes, createdDate, lastUpdated);
-            controller.addReferral(result);
+            
+            if (existingReferral != null) {
+                controller.updateReferral(result);
+            } else {
+                controller.addReferral(result);
+            }
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Invalid input: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private boolean validateFields() {
+        if (referralIdField.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Referral ID is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (patientIdField.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Patient ID is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
     public Referral getResult() {
